@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_to_winit.c                                    :+:      :+:    :+:   */
+/*   handle_args.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 16:55:02 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/12 19:46:08 by candrese         ###   ########.fr       */
+/*   Created: 2024/05/12 16:20:03 by candrese          #+#    #+#             */
+/*   Updated: 2024/05/12 20:51:31 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	add_node (t_stack_node **stack, int value)
+t_stack_node *args (char **argv)
 {
-	t_stack_node *new;
-	t_stack_node *prev;
-
-	new = malloc(sizeof(t_stack_node));
-	if (!new)
-		error_fd(STDERR_FILENO);
-	new->value = value;
-	if (! *stack)
+	int				i;
+	t_stack_node 	*a;
+	char			**values;
+	
+	i = 0;
+	a = NULL;
+	values = ft_split(argv[1], ' ');
+	while (values[i])
 	{
-		*stack = new;
-		new->prev = NULL;
+		add_node(&a, my_atolong(values[i]));
+		i++;
 	}
-	else
-	{
-		prev = *stack;
-		while (prev->next != NULL)
-			prev = prev ->next;
-		prev->next = new;
-		new->prev = prev;
-		new->next = NULL;
-	}
+	return (a);
 }
-
