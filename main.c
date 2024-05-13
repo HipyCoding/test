@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 07:53:30 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 08:45:57 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	main(int argc, char **argv)
 	else
 		a = args(argv);
 
-	sa(&a);
 //for testing and debugging
+	sa(&a);
 	//stack a
 	while (a->prev != NULL)
 		a=a->prev;
