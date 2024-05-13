@@ -6,11 +6,32 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:20:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 01:26:12 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 02:38:18 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+
+void	dup_check(t_stack_node *stack)
+{
+	t_stack_node	*check;
+	t_stack_node	*node;
+
+	check = NULL;
+	node = stack;
+	while (node != NULL)
+	{
+		check = node->next;
+		while (check != NULL)
+		{
+			if (node->value == check->value)
+				error_fd(STDERR_FILENO);
+			check = check->next;
+		}
+		node = node->next;
+	}
+}
 
 t_stack_node *args (char **argv)
 {
@@ -20,15 +41,16 @@ t_stack_node *args (char **argv)
 	argv++;
 	a = NULL;
 	values = ft_split(*argv, ' ');
-		while(*argv)
+	while(*argv)
+	{
+		values = ft_split(*argv, ' ');
+		while (*values)
 		{
-			values = ft_split(*argv, ' ');
-			while (*values)
-			{
-				add_node(&a, my_atolong(*values));
-				values++;
-			}
-			argv++;
+			add_node(&a, my_atolong(*values));
+			values++;
 		}
+		argv++;
+	}
+	dup_check(a);
 	return (a);
 }

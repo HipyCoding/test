@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 01:24:57 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 07:53:30 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ int	main(int argc, char **argv)
 	else
 		a = args(argv);
 
+	sa(&a);
 //for testing and debugging
+	//stack a
 	while (a->prev != NULL)
 		a=a->prev;
 	while (a->next != NULL)
@@ -48,6 +50,15 @@ int	main(int argc, char **argv)
 		a = a->next;
 	}
 	printf("%d ", a->value);
+	//stack b
+	// while (b->prev != NULL)
+	// 	b=b->prev;
+	// while (b->next != NULL)
+	// {
+	// 	printf("%d ", b->value);
+	// 	b = b->next;
+	// }
+	// printf("%d ", b->value);
 // TO DO free_stack(&a);
 	return (0);
 }

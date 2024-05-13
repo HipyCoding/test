@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:51:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 02:09:14 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 02:50:41 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ long	my_atolong(const char *s)
 
 void	putstr_fd(char *s, int fd)
 {
-	if (NULL == s || fd < 0)
+	if (s == NULL || fd < 0)
 		return ;
-	if (*s != '\0')
+	while (*s)
 	{
 		write(fd, s, 1);
-		putstr_fd(s + 1, fd);
+		s++;
 	}
 }
 
