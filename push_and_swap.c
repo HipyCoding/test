@@ -6,13 +6,13 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:32:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 19:03:01 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:28:46 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack_node **stack_a)
+void	sa(t_stack_node **stack_a, int print)
 {
 	t_stack_node  *temp;
 
@@ -27,10 +27,11 @@ void	sa(t_stack_node **stack_a)
 	(*stack_a)->prev = temp;
 	(*stack_a)->next = NULL;
 	temp->next = (*stack_a);
-	putstr_fd("sa\n", STDERR_FILENO);
+	if (print)
+		putstr_fd("rb\n", STDERR_FILENO);
 }
 
-void	sb(t_stack_node **stack_b)
+void	sb(t_stack_node **stack_b, int print)
 {
 	t_stack_node  *temp;
 
@@ -45,13 +46,14 @@ void	sb(t_stack_node **stack_b)
 	(*stack_b)->prev = temp;
 	(*stack_b)->next = NULL;
 	temp->next = (*stack_b);
-	putstr_fd("sa\n", STDERR_FILENO);
+	if (print)
+		putstr_fd("rb\n", STDERR_FILENO);
 }
 
 void	ss(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-	sa(stack_a);
-	sb(stack_b);
+	sa(stack_a, 0);
+	sb(stack_b, 0);
 	putstr_fd("ss\n", STDERR_FILENO);
 }
 

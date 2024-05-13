@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 18:50:02 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:41:26 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,17 @@ t_stack_node	*argsb ();//for testing
 void			add_node (t_stack_node **stack, int nb);
 
 //stack commands
-void			sa(t_stack_node **stack_a);
-void			sb(t_stack_node **stack_a);
+void			sa(t_stack_node **stack_a, int print);
+void			sb(t_stack_node **stack_a, int print);
 void			ss(t_stack_node **stack_a, t_stack_node **stack_b);
 void			pa(t_stack_node **stack_b, t_stack_node **stack_a);
 void			pb(t_stack_node **stack_a, t_stack_node **stack_b);
+void			ra(t_stack_node **stack_a, int print);
+void			rb(t_stack_node **stack_b, int print);
+void			rr(t_stack_node **stack_b, t_stack_node **stack_a);
+void			rra(t_stack_node **stack_a, int print);
+void			rrb(t_stack_node **stack_b, int print);
+void			rrr(t_stack_node **stack_a, t_stack_node **stack_b);
 
 
 //utils

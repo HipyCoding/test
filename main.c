@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 19:03:58 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:40:29 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		a = args(argv);
 		b = argsb();
 	}
-	pb(&a, &b);
+	rrr(&a, &b);
 	// sa(&a);
 // for testing and debugging
 	
