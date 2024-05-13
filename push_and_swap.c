@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:32:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 17:51:29 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:03:01 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,40 @@ void	ss(t_stack_node **stack_a, t_stack_node **stack_b)
 	sa(stack_a);
 	sb(stack_b);
 	putstr_fd("ss\n", STDERR_FILENO);
+}
+
+void	pa(t_stack_node **stack_b, t_stack_node **stack_a)
+{
+	t_stack_node *temp;
+
+	if (*stack_b == NULL || (*stack_b)->next == NULL)
+		return;
+	temp = *stack_b;
+	while ((*stack_b)->next != NULL)
+		*stack_b = (*stack_b)->next;
+	while ((*stack_a)->next != NULL)
+		*stack_a = (*stack_a)->next;
+	(*stack_b)->prev->next = NULL;
+	(*stack_b)->prev = *stack_a;
+	(*stack_a)->next = *stack_b;
+	*stack_b = temp;
+	putstr_fd("pa\n", STDERR_FILENO);
+}
+
+void	pb(t_stack_node **stack_a, t_stack_node **stack_b)
+{
+	t_stack_node *temp;
+
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return;
+	temp = *stack_a;
+	while ((*stack_b)->next != NULL)
+		*stack_b = (*stack_b)->next;
+	while ((*stack_a)->next != NULL)
+		*stack_a = (*stack_a)->next;
+	(*stack_a)->prev->next = NULL;
+	(*stack_a)->prev = *stack_b;
+	(*stack_b)->next = (*stack_a);
+	*stack_a = temp;
+	putstr_fd("pb\n", STDERR_FILENO);
 }

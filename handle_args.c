@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:20:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 02:38:18 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:49:45 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,19 @@ t_stack_node *args (char **argv)
 	}
 	dup_check(a);
 	return (a);
+}
+
+//initializes b stack for testing
+t_stack_node *argsb ()
+{
+	t_stack_node 	*b;
+	int	i = 10;
+	
+	b = NULL;
+	while(i<15)
+	{
+		add_node(&b, i++);
+	}
+	dup_check(b);
+	return (b);
 }

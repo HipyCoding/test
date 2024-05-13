@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 08:45:57 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:03:58 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,15 @@ int	main(int argc, char **argv)
 		return (1);
 	// init stack
 	else
+	{
 		a = args(argv);
-
-//for testing and debugging
-	sa(&a);
-	//stack a
+		b = argsb();
+	}
+	pb(&a, &b);
+	// sa(&a);
+// for testing and debugging
+	
+	// stack a
 	while (a->prev != NULL)
 		a=a->prev;
 	while (a->next != NULL)
@@ -49,16 +53,16 @@ int	main(int argc, char **argv)
 		printf("%d ", a->value);
 		a = a->next;
 	}
-	printf("%d ", a->value);
-	//stack b
-	// while (b->prev != NULL)
-	// 	b=b->prev;
-	// while (b->next != NULL)
-	// {
-	// 	printf("%d ", b->value);
-	// 	b = b->next;
-	// }
-	// printf("%d ", b->value);
+	printf("%d\n", a->value);
+	// stack b
+	while (b->prev != NULL)
+		b=b->prev;
+	while (b->next != NULL)
+	{
+		printf("%d ", b->value);
+		b = b->next;
+	}
+	printf("%d\n", b->value);
 // TO DO free_stack(&a);
 	return (0);
 }
