@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:51:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/12 22:12:12 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 02:09:14 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,25 @@
 
 long	my_atolong(const char *s)
 {
-	int			i;
 	long int	nb;
 	int			pm;
-
-	i = 0;
+	
 	nb = 0;
 	pm = 1;
-	while (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
-		i++;
-	if (s[i] == '-' || s[i] == '+')
+	while (*s == ' ' || (*s >= 9 && *s <= 13))
+		s++;
+	if (*s == '-' || *s == '+')
 	{
-		if (s[i] == '-')
+		if (*s == '-')
 			pm = pm * (-1);
-		i++;
+		s++;
 	}
-	while (s[i] != '\0' && s[i] >= '0' && s[i] <= '9')
+	while (*s != '\0' && *s >= '0' && *s <= '9')
 	{
-		nb = (nb * 10) + s[i] - '0';
-		i++;
+		nb = (nb * 10) + *s - '0';
+		s++;
 	}
-	if (nb * pm > INT_MAX || nb * pm < INT_MIN || s[i] < '0' || s[i] > '9')
+	if (nb * pm > INT_MAX || nb * pm < INT_MIN || *(s - 1) < '0' || *(s - 1) > '9')
 		error_fd(STDERR_FILENO);
 	return (nb * pm);
 }

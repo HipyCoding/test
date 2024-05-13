@@ -6,14 +6,15 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/12 20:50:44 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/13 01:52:05 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include <stdlib.h>
+# include <stddef.h>
 # include <stdbool.h>
 # include <limits.h>
 # include <unistd.h>
