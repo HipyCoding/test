@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 20:40:29 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:29:50 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,17 @@
 
 #include <stdio.h>
 
+// void	memory_leaks(void)
+// {
+// 	system("leaks push_swap");
+// }
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
 
+	//atexit(memory_leaks);
 	a = NULL;
 	b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
@@ -39,30 +45,30 @@ int	main(int argc, char **argv)
 	else
 	{
 		a = args(argv);
-		b = argsb();
+		// b = argsb();
 	}
-	rrr(&a, &b);
+	sa(&a,1);
 	// sa(&a);
 // for testing and debugging
 	
 	// stack a
-	while (a->prev != NULL)
-		a=a->prev;
-	while (a->next != NULL)
-	{
-		printf("%d ", a->value);
-		a = a->next;
-	}
-	printf("%d\n", a->value);
+	// while (a->prev != NULL)
+	// 	a=a->prev;
+	// while (a->next != NULL)
+	// {
+	// 	printf("%d ", a->value);
+	// 	a = a->next;
+	// }
+	// printf("%d\n", a->value);
 	// stack b
-	while (b->prev != NULL)
-		b=b->prev;
-	while (b->next != NULL)
-	{
-		printf("%d ", b->value);
-		b = b->next;
-	}
-	printf("%d\n", b->value);
-// TO DO free_stack(&a);
+	// while (b->prev != NULL)
+	// 	b=b->prev;
+	// while (b->next != NULL)
+	// {
+	// 	printf("%d ", b->value);
+	// 	b = b->next;
+	// }
+	// printf("%d\n", b->value);
+	free_stack(a);
 	return (0);
 }

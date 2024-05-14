@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 20:41:26 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:12:35 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,8 @@ void		putstr_fd(char *s, int fd);
 void		error_fd(int fd);
 long		my_atolong(const char *s);
 char		**ft_split(char const *s, char c);
+void		free_2d_string(char **ptr);
+void		free_stack(t_stack_node *stack);
+void		free_and_exit(char **ptr, t_stack_node *stack, int	i);
 
 #endif

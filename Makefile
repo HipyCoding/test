@@ -6,7 +6,7 @@
 #    By: candrese <candrese@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/12 18:11:58 by candrese          #+#    #+#              #
-#    Updated: 2024/05/13 20:43:18 by candrese         ###   ########.fr        #
+#    Updated: 2024/05/14 17:34:52 by candrese         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,8 @@ all: $(NAME)
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
-$(LIB):
-	@make -sC $(LIB_PATH)
-
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) $(LIB) -o $(NAME)
+	@$(CC) $(OBJS) $(HEADERS) -o $(NAME)
 
 clean:
 	@echo "cleaning up..."

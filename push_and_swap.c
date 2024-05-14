@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:32:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 20:28:46 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:28:36 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	sa(t_stack_node **stack_a, int print)
 	(*stack_a)->next = NULL;
 	temp->next = (*stack_a);
 	if (print)
-		putstr_fd("rb\n", STDERR_FILENO);
+		putstr_fd("sa\n", STDERR_FILENO);
 }
 
 void	sb(t_stack_node **stack_b, int print)
@@ -47,7 +47,7 @@ void	sb(t_stack_node **stack_b, int print)
 	(*stack_b)->next = NULL;
 	temp->next = (*stack_b);
 	if (print)
-		putstr_fd("rb\n", STDERR_FILENO);
+		putstr_fd("sb\n", STDERR_FILENO);
 }
 
 void	ss(t_stack_node **stack_a, t_stack_node **stack_b)

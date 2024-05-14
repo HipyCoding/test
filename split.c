@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 17:10:22 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/12 20:02:26 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/14 20:04:44 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ static char	*ft_put_string(char const *s, size_t word_len)
 char	**ft_split(char const *s, char c)
 {
 	char		**s2;
-	static size_t		end;
-	static size_t		start;
+	size_t		end;
+	size_t		start;
 	size_t		words;
 
 	s2 = malloc(sizeof(char *) * (ft_count(s, c) + 1));
