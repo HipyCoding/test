@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 22:14:28 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/16 17:12:48 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/24 21:15:15 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ void	free_stack(t_stack_node *stack)
 		return;
 	while (stack->prev != NULL)
 		stack = stack->prev;
+	while (stack->next != NULL)
+	{
 		temp = stack->next;
 		free (stack);
 		stack = temp;
-	
+	}
+	free (stack);
 }
