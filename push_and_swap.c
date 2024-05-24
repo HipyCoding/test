@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:32:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/14 21:28:36 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:43:59 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	sa(t_stack_node **stack_a, int print)
 	(*stack_a)->prev = temp;
 	(*stack_a)->next = NULL;
 	temp->next = (*stack_a);
-	if (print)
-		putstr_fd("sa\n", STDERR_FILENO);
+	if (print == 1)
+		putstr_fd("sa\n", 1);
 }
 
 void	sb(t_stack_node **stack_b, int print)

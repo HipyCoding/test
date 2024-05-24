@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:55:02 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/13 01:39:49 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:49:52 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	add_node (t_stack_node **stack, int value)
 
 	new = malloc(sizeof(t_stack_node));
 	if (!new)
-		error_fd(STDERR_FILENO);
+		return;
 	new->next = NULL;
 	new->value = value;
 	if (!*stack)

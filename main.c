@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/14 21:29:50 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:11:51 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,33 @@
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
-	t_stack_node	*b;
+	//t_stack_node	*b;
 
 	//atexit(memory_leaks);
 	a = NULL;
-	b = NULL;
+	//b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	// init stack
 	else
 	{
-		a = args(argv);
+		a = read_args(argc, argv);
 		// b = argsb();
 	}
 	sa(&a,1);
-	// sa(&a);
+
 // for testing and debugging
 	
 	// stack a
-	// while (a->prev != NULL)
-	// 	a=a->prev;
-	// while (a->next != NULL)
-	// {
-	// 	printf("%d ", a->value);
-	// 	a = a->next;
-	// }
-	// printf("%d\n", a->value);
+	while (a->prev != NULL)
+		a=a->prev;
+	while (a->next != NULL)
+	{
+		printf("%d ", a->value);
+		a = a->next;
+	}
+	printf("%d\n", a->value);
+
 	// stack b
 	// while (b->prev != NULL)
 	// 	b=b->prev;

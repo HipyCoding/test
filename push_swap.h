@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/14 21:12:35 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:11:31 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack_node
 }	t_stack_node;
 
 //stack handling
-t_stack_node	*args (char **argv);
+t_stack_node	*read_args (int argc, char **argv);
 t_stack_node	*argsb ();//for testing
 void			add_node (t_stack_node **stack, int nb);
 

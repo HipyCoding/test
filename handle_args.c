@@ -6,12 +6,11 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:20:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/14 21:21:56 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:11:16 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	dup_check(t_stack_node *stack)
 {
@@ -35,27 +34,27 @@ void	dup_check(t_stack_node *stack)
 	}
 }
 
-t_stack_node *args (char **argv)
+t_stack_node *read_args (int argc, char **argv)
 {
 	t_stack_node 	*a;
-	char			**values;
 	int				i;
 	
 	i = 0;
-	argv++;
 	a = NULL;
-	while(*argv)
+	if (argc == 2)
 	{
-		values = ft_split(*argv, ' ');
-		if (!values)
+		argv = ft_split(argv[1], ' ');
+		if (!argv)
 			free_and_exit(NULL, a, 1);
-		while (values[i])
-		{
-			add_node(&a, my_atolong(values[i]));
-			i++;
-		}
-		free_2d_string(values);
+		while (argv[i])
+			add_node(&a, my_atolong(argv[i++]));
+		free_2d_string(argv);
+	}
+	else if (argc > 2)
+	{
 		argv++;
+		while (*argv)
+			add_node(&a, my_atolong(*(argv++)));
 	}
 	dup_check(a);
 	return (a);
