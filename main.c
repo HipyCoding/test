@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/24 17:11:51 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/25 04:12:16 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@
 
 #include <stdio.h>
 
-// void	memory_leaks(void)
-// {
-// 	system("leaks push_swap");
-// }
+void	memory_leaks(void)
+{
+	system("leaks push_swap");
+}
 
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	//t_stack_node	*b;
 
-	//atexit(memory_leaks);
+	atexit(memory_leaks);
 	a = NULL;
 	//b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 	sa(&a,1);
 
 // for testing and debugging
-	
+
 	// stack a
 	while (a->prev != NULL)
 		a=a->prev;

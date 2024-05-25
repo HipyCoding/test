@@ -6,17 +6,17 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:51:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/14 22:15:50 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/25 05:46:30 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	my_atolong(const char *s)
+long long	my_atolong(const char *s, int *error)
 {
-	long int	nb;
-	int			pm;
-	
+	long long int	nb;
+	int				pm;
+
 	nb = 0;
 	pm = 1;
 	while (*s == ' ' || (*s >= 9 && *s <= 13))
@@ -32,8 +32,8 @@ long	my_atolong(const char *s)
 		nb = (nb * 10) + *s - '0';
 		s++;
 	}
-	if (nb * pm > INT_MAX || nb * pm < INT_MIN || *(s - 1) < '0' || *(s - 1) > '9')
-		error_fd(STDERR_FILENO);
+	if (nb * pm > INT_MAX || nb * pm < INT_MIN || *s != '\0')
+		*error = 1;
 	return (nb * pm);
 }
 

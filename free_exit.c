@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 22:14:28 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/24 21:15:15 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/24 21:56:50 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	free_and_exit(char **ptr, t_stack_node *stack, int	i)
 		free_2d_string(ptr);
 	else if (i == 1)
 		free_stack(stack);
+	else if (i == 2)
+	{
+		free_2d_string(ptr);
+		free_stack(stack);
+	}
 	error_fd(STDERR_FILENO);
 }
 
