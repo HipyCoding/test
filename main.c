@@ -6,29 +6,41 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/25 04:12:16 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/06 09:12:46 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//declare pointers to data structs, stack a and b
-
-//handle input count and errors. argument count must be 2 or more, and the second input must not be empty
-
-//handle inputs as variable number of command line arguments or as a string (split)
-
-//initialize stack a by appending each input number as a node to stack a
-//	handle integer overflow, dublicates and syntax errors (only digits, + -)
-//	check input if long integer
-//		if the input is a string, convert to long integer
-//	append the nodes to stack a
-
 #include <stdio.h>
 
 void	memory_leaks(void)
 {
 	system("leaks push_swap");
+}
+
+void	sort_3(t_stack_node *a)
+{
+	t_stack_node	*node;
+
+	if (!a)
+		return;
+	node = a;
+	if (check_max(a)->value == node->value)
+		ra(&a,1);
+	else if (check_max(a)->value == node->next->value)
+		rra(&a,1);
+	check_if_sorted(a);
+	sa(&a,1);
+}
+
+void	sort_stack(t_stack_node *a)
+{
+	if (check_size(a) == 2)
+		sa(&a , 1);
+	else if (check_size(a) == 3)
+		sort_3(a);
+	// else
+	// 	sorting_algorithm
 }
 
 int	main(int argc, char **argv)
@@ -41,13 +53,11 @@ int	main(int argc, char **argv)
 	//b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	// init stack
-	else
-	{
-		a = read_args(argc, argv);
-		// b = argsb();
-	}
-	sa(&a,1);
+	a = read_args(argc, argv);
+	// check_if_sorted(a);
+	sort_stack(a);
+	// printf("%i\n",check_max(a)->value);
+	// sa(&a,1);
 
 // for testing and debugging
 

@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 20:32:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/14 21:29:03 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/06 09:00:52 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	rra(t_stack_node **stack_a, int print)
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return;
 	temp = *stack_a;
-	(*stack_a)->next->prev = NULL;
 	while ((*stack_a)->next != NULL)
 		*stack_a = (*stack_a)->next;
 	(*stack_a)->next = temp;
+	(*stack_a)->prev->next = NULL;
 	temp->prev = *stack_a;
-	temp->next = NULL;
+	(*stack_a)->prev = NULL;
 	if (print)
 		putstr_fd("rra\n", STDERR_FILENO);
 }
@@ -36,12 +36,12 @@ void	rrb(t_stack_node **stack_b, int print)
 	if (*stack_b == NULL || (*stack_b)->next == NULL)
 		return;
 	temp = *stack_b;
-	(*stack_b)->next->prev = NULL;
 	while ((*stack_b)->next != NULL)
 		*stack_b = (*stack_b)->next;
 	(*stack_b)->next = temp;
+	(*stack_b)->prev->next = NULL;
 	temp->prev = *stack_b;
-	temp->next = NULL;
+	(*stack_b)->prev = NULL;
 	if (print)
 		putstr_fd("rrb\n", STDERR_FILENO);
 }

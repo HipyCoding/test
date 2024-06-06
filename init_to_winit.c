@@ -6,13 +6,11 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:55:02 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/24 22:14:15 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/25 06:23:30 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 void	add_node (t_stack_node **stack, int value)
 {

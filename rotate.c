@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
@@ -19,12 +19,15 @@ void	ra(t_stack_node **stack_a, int print)
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return;
 	temp = *stack_a;
+	(*stack_a)->next->prev = NULL;
+	*stack_a = (*stack_a)->next;
 	while ((*stack_a)->next != NULL)
 		*stack_a = (*stack_a)->next;
-	(*stack_a)->prev->next = NULL;
-	(*stack_a)->prev = NULL;
 	(*stack_a)->next = temp;
 	temp->prev = *stack_a;
+	temp->next = NULL;
+	while ((*stack_a)->prev != NULL )
+		*stack_a = (*stack_a)->prev;
 	if (print)
 		putstr_fd("ra\n", STDERR_FILENO);
 }
@@ -36,12 +39,15 @@ void	rb(t_stack_node **stack_b, int print)
 	if (*stack_b == NULL || (*stack_b)->next == NULL)
 		return;
 	temp = *stack_b;
+	(*stack_b)->next->prev = NULL;
+	*stack_b = (*stack_b)->next;
 	while ((*stack_b)->next != NULL)
 		*stack_b = (*stack_b)->next;
-	(*stack_b)->prev->next = NULL;
-	(*stack_b)->prev = NULL;
 	(*stack_b)->next = temp;
 	temp->prev = *stack_b;
+	temp->next = NULL;
+	while ((*stack_b)->prev != NULL )
+		*stack_b = (*stack_b)->prev;
 	if (print)
 		putstr_fd("rb\n", STDERR_FILENO);
 }

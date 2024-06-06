@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/25 05:45:27 by candrese         ###   ########.fr       */
+/*   Updated: 2024/05/30 04:44:24 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void			rra(t_stack_node **stack_a, int print);
 void			rrb(t_stack_node **stack_b, int print);
 void			rrr(t_stack_node **stack_a, t_stack_node **stack_b);
 
-
 //utils
 void		putstr_fd(char *s, int fd);
 void		error_fd(int fd);
@@ -53,5 +52,10 @@ char		**ft_split(char const *s, char c);
 void		free_2d_string(char **ptr);
 void		free_stack(t_stack_node *stack);
 void		free_and_exit(char **ptr, t_stack_node *stack, int	i);
+
+//checks
+void	check_if_sorted(t_stack_node *stack);
+int		check_size(t_stack_node *stack);
+t_stack_node *check_max(t_stack_node *stack);
 
 #endif

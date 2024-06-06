@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:32:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/14 22:43:59 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/06 08:38:53 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,14 @@ void	sa(t_stack_node **stack_a, int print)
 
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return;
-	while ((*stack_a)->next != NULL)
-		*stack_a = (*stack_a)->next;
 	temp = *stack_a;
-	*stack_a = (*stack_a)->prev;
-	(*stack_a)->prev->next = temp;
-	temp->prev = (*stack_a)->prev;
-	(*stack_a)->prev = temp;
-	(*stack_a)->next = NULL;
-	temp->next = (*stack_a);
+	*stack_a = (*stack_a)->next;
+	(*stack_a)->prev = NULL;
+	temp->next  = (*stack_a)->next;
+	temp->prev = *stack_a;
+	(*stack_a)->next = temp;
 	if (print == 1)
-		putstr_fd("sa\n", 1);
+		putstr_fd("sa\n", STDERR_FILENO);
 }
 
 void	sb(t_stack_node **stack_b, int print)
@@ -37,16 +34,13 @@ void	sb(t_stack_node **stack_b, int print)
 
 	if (*stack_b == NULL || (*stack_b)->next == NULL)
 		return;
-	while ((*stack_b)->next != NULL)
-		*stack_b = (*stack_b)->next;
 	temp = *stack_b;
-	*stack_b = (*stack_b)->prev;
-	(*stack_b)->prev->next = temp;
-	temp->prev = (*stack_b)->prev;
-	(*stack_b)->prev = temp;
-	(*stack_b)->next = NULL;
-	temp->next = (*stack_b);
-	if (print)
+	*stack_b = (*stack_b)->next;
+	(*stack_b)->prev = NULL;
+	temp->next  = (*stack_b)->next;
+	temp->prev = *stack_b;
+	(*stack_b)->next = temp;
+	if (print == 1)
 		putstr_fd("sb\n", STDERR_FILENO);
 }
 
@@ -57,21 +51,28 @@ void	ss(t_stack_node **stack_a, t_stack_node **stack_b)
 	putstr_fd("ss\n", STDERR_FILENO);
 }
 
+// src	-> dest;
 void	pa(t_stack_node **stack_b, t_stack_node **stack_a)
 {
 	t_stack_node *temp;
 
-	if (*stack_b == NULL || (*stack_b)->next == NULL)
+	if (!*stack_b)
 		return;
 	temp = *stack_b;
-	while ((*stack_b)->next != NULL)
+	if ((*stack_b)->next != NULL)
+	{
 		*stack_b = (*stack_b)->next;
-	while ((*stack_a)->next != NULL)
-		*stack_a = (*stack_a)->next;
-	(*stack_b)->prev->next = NULL;
-	(*stack_b)->prev = *stack_a;
-	(*stack_a)->next = *stack_b;
-	*stack_b = temp;
+		(*stack_b)->prev = NULL;
+	}
+	if (*stack_a)
+	{
+		temp->next = *stack_a;
+		(*stack_a)->prev = temp;
+	}
+	else
+		temp->next = NULL;
+	temp->prev = NULL;
+	*stack_a = temp;
 	putstr_fd("pa\n", STDERR_FILENO);
 }
 
@@ -79,16 +80,22 @@ void	pb(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	t_stack_node *temp;
 
-	if (*stack_a == NULL || (*stack_a)->next == NULL)
+	if (!*stack_a)
 		return;
 	temp = *stack_a;
-	while ((*stack_b)->next != NULL)
-		*stack_b = (*stack_b)->next;
-	while ((*stack_a)->next != NULL)
+	if ((*stack_a)->next != NULL)
+	{
 		*stack_a = (*stack_a)->next;
-	(*stack_a)->prev->next = NULL;
-	(*stack_a)->prev = *stack_b;
-	(*stack_b)->next = (*stack_a);
-	*stack_a = temp;
+		(*stack_a)->prev = NULL;
+	}
+	if (*stack_b)
+	{
+		temp->next = *stack_b;
+		(*stack_b)->prev = temp;
+	}
+	else
+		temp->next = NULL;
+	temp->prev = NULL;
+	(*stack_b) = temp;
 	putstr_fd("pb\n", STDERR_FILENO);
 }
