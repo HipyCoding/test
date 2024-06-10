@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/30 04:44:24 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:47:13 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 typedef struct s_stack_node
 {
 	int						value;
+	int						index;
+	bool					above_median;
+	bool					cheapest;
 	struct s_stack_node		*next;
 	struct s_stack_node		*prev;
 }	t_stack_node;
@@ -34,15 +37,15 @@ void			add_node (t_stack_node **stack, int nb);
 //stack commands
 void			sa(t_stack_node **stack_a, int print);
 void			sb(t_stack_node **stack_a, int print);
-void			ss(t_stack_node **stack_a, t_stack_node **stack_b);
-void			pa(t_stack_node **stack_b, t_stack_node **stack_a);
-void			pb(t_stack_node **stack_a, t_stack_node **stack_b);
+void			ss(t_stack_node **stack_a, t_stack_node **stack_b, int print);
+void			pa(t_stack_node **stack_b, t_stack_node **stack_a, int print);
+void			pb(t_stack_node **stack_a, t_stack_node **stack_b, int print);
 void			ra(t_stack_node **stack_a, int print);
 void			rb(t_stack_node **stack_b, int print);
-void			rr(t_stack_node **stack_b, t_stack_node **stack_a);
+void			rr(t_stack_node **stack_b, t_stack_node **stack_a, int print);
 void			rra(t_stack_node **stack_a, int print);
 void			rrb(t_stack_node **stack_b, int print);
-void			rrr(t_stack_node **stack_a, t_stack_node **stack_b);
+void			rrr(t_stack_node **stack_a, t_stack_node **stack_b, int print);
 
 //utils
 void		putstr_fd(char *s, int fd);
