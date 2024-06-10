@@ -52,9 +52,10 @@ void	rb(t_stack_node **stack_b, int print)
 		putstr_fd("rb\n", STDERR_FILENO);
 }
 
-void	rr(t_stack_node **stack_a, t_stack_node **stack_b)
+void	rr(t_stack_node **stack_a, t_stack_node **stack_b, int print)
 {
 	ra(stack_a, 0);
 	rb(stack_b, 0);
-	putstr_fd("rr\n", STDERR_FILENO);
+	if (print)
+		putstr_fd("rr\n", STDERR_FILENO);
 }

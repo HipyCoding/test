@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 20:32:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/06 09:00:52 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:44:06 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ void	rrb(t_stack_node **stack_b, int print)
 		putstr_fd("rrb\n", STDERR_FILENO);
 }
 
-void	rrr(t_stack_node **stack_a, t_stack_node **stack_b)
+void	rrr(t_stack_node **stack_a, t_stack_node **stack_b, int print)
 {
 	rra(stack_a, 0);
 	rrb(stack_b, 0);
-	putstr_fd("rrr\n", STDERR_FILENO);
+	if (print)
+		putstr_fd("rrr\n", STDERR_FILENO);
 }
