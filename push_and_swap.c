@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:32:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/06 08:38:53 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:23:39 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,17 @@ void	sb(t_stack_node **stack_b, int print)
 		putstr_fd("sb\n", STDERR_FILENO);
 }
 
-void	ss(t_stack_node **stack_a, t_stack_node **stack_b)
+void	ss(t_stack_node **stack_a, t_stack_node **stack_b, int print)
 {
 	sa(stack_a, 0);
 	sb(stack_b, 0);
-	putstr_fd("ss\n", STDERR_FILENO);
+	if (print)
+		putstr_fd("ss\n", STDERR_FILENO);
 }
 
-// src	-> dest;
-void	pa(t_stack_node **stack_b, t_stack_node **stack_a)
+// (src	-> dest);
+
+void	pa(t_stack_node **stack_b, t_stack_node **stack_a, int print)
 {
 	t_stack_node *temp;
 
@@ -64,6 +66,8 @@ void	pa(t_stack_node **stack_b, t_stack_node **stack_a)
 		*stack_b = (*stack_b)->next;
 		(*stack_b)->prev = NULL;
 	}
+	else
+		*stack_b = NULL;
 	if (*stack_a)
 	{
 		temp->next = *stack_a;
@@ -73,10 +77,11 @@ void	pa(t_stack_node **stack_b, t_stack_node **stack_a)
 		temp->next = NULL;
 	temp->prev = NULL;
 	*stack_a = temp;
-	putstr_fd("pa\n", STDERR_FILENO);
+	if (print)
+		putstr_fd("pa\n", STDERR_FILENO);
 }
 
-void	pb(t_stack_node **stack_a, t_stack_node **stack_b)
+void	pb(t_stack_node **stack_a, t_stack_node **stack_b, int print)
 {
 	t_stack_node *temp;
 
@@ -88,6 +93,8 @@ void	pb(t_stack_node **stack_a, t_stack_node **stack_b)
 		*stack_a = (*stack_a)->next;
 		(*stack_a)->prev = NULL;
 	}
+	else
+		*stack_a = NULL;
 	if (*stack_b)
 	{
 		temp->next = *stack_b;
@@ -97,5 +104,6 @@ void	pb(t_stack_node **stack_a, t_stack_node **stack_b)
 		temp->next = NULL;
 	temp->prev = NULL;
 	(*stack_b) = temp;
-	putstr_fd("pb\n", STDERR_FILENO);
+	if (print)
+		putstr_fd("pb\n", STDERR_FILENO);
 }
