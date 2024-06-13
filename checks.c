@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 06:04:06 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/06 08:21:28 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/13 04:55:45 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,26 @@ t_stack_node *check_max(t_stack_node *stack)
 			max = node;
 	}
 	return (max);
+}
+
+int 	next_bigger(t_stack_node *stack, int nb)
+{
+	int		min;
+	bool	new;
+
+	min = INT_MAX;
+	new = false;
+	while (stack->next)
+	{
+		if (stack->value > nb && stack->value < min)
+		{
+			min = stack->value;
+			new = true;
+		}
+		stack = stack->next;
+	}
+	if (new)
+		return (min);
+	else
+		return (INT_MAX);
 }
