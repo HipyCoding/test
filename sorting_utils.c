@@ -6,36 +6,35 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:55:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/13 05:23:04 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/14 20:39:16 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void assign_index(t_stack_node *stack)
+void assign_index(t_stack_node *stack, int size)
 {
 	int				i;
 	int				min;
-	int				s_size;
+	t_stack_node	*temp;
 
+	if (!stack)
+		return;
 	i = 0;
-	s_size = check_size(stack);
-	while (i < s_size)
+	min = INT_MIN;
+	while (i < size)
 	{
 		min = next_bigger(stack, min);
-		while (stack->prev)
-			stack = stack->prev;
-		while (stack->next)
+		temp = stack;
+		while (temp)
 		{
-			if (stack->value == min)
+			if (temp->value == min)
 			{
-				stack->index = i;
+				temp->index = i;
 				i++;
 				break ;
 			}
-			stack = stack->next;
+			temp = temp->next;
 		}
 	}
-	while (stack->prev)
-		stack = stack->prev;
 }
