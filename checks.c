@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 06:04:06 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/13 04:55:45 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/14 20:29:05 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,21 @@ t_stack_node *check_max(t_stack_node *stack)
 
 int 	next_bigger(t_stack_node *stack, int nb)
 {
-	int		min;
-	bool	new;
+	int				min;
+	bool			new;
+	t_stack_node	*node;
 
 	min = INT_MAX;
 	new = false;
-	while (stack->next)
+	node = stack;
+	while (node)
 	{
-		if (stack->value > nb && stack->value < min)
+		if (node->value > nb && node->value < min)
 		{
-			min = stack->value;
+			min = node->value;
 			new = true;
 		}
-		stack = stack->next;
+		node = node->next;
 	}
 	if (new)
 		return (min);
