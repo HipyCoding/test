@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/14 20:36:17 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/15 20:27:33 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void			rrb(t_stack_node **stack_b, int print);
 void			rrr(t_stack_node **stack_a, t_stack_node **stack_b, int print);
 
 //algorithm
-void	big_sort(t_stack_node *stack, int size);
+void	sort_3(t_stack_node *a);
+void	big_sort(t_stack_node *a, t_stack_node *b, int size);
 
 //utils
 void		putstr_fd(char *s, int fd);
@@ -63,9 +64,10 @@ void		free_and_exit(char **ptr, t_stack_node *stack, int	i);
 void assign_index(t_stack_node *stack, int size);
 
 //checks
-void	check_if_sorted(t_stack_node *stack);
-int		check_size(t_stack_node *stack);
-t_stack_node *check_max(t_stack_node *stack);
-int 	next_bigger(t_stack_node *stack, int nb);
+void			check_if_sorted(t_stack_node *stack);
+int				check_size(t_stack_node *stack);
+t_stack_node	*check_max(t_stack_node *stack);
+int				next_bigger(t_stack_node *stack, int nb);
+void			check_above_median(t_stack_node *stack, int size);
 
 #endif
