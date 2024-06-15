@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/15 20:34:09 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 01:31:20 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void			rrb(t_stack_node **stack_b, int print);
 void			rrr(t_stack_node **stack_a, t_stack_node **stack_b, int print);
 
 //algorithm
-void	sort_3(t_stack_node *a);
-void	big_sort(t_stack_node *a, t_stack_node *b, int size);
+void	sort_3(t_stack_node **a);
+void	big_sort(t_stack_node **a, t_stack_node **b, int size);
 
 //utils
 void		putstr_fd(char *s, int fd);
@@ -62,10 +62,11 @@ void		free_stack(t_stack_node *stack);
 void		free_and_exit(char **ptr, t_stack_node *stack, int	i);
 
 //sorting utils
-void assign_index(t_stack_node *stack, int size);
+void	assign_index(t_stack_node *stack, int size);
+void	get_positions(t_stack_node *stack);
 
 //checks
-void			check_if_sorted(t_stack_node *stack);
+int			check_if_sorted(t_stack_node *stack);
 int				check_size(t_stack_node *stack);
 t_stack_node	*check_max(t_stack_node *stack);
 int				next_bigger(t_stack_node *stack, int nb);

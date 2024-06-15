@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:55:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/15 20:46:03 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 01:42:07 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void assign_index(t_stack_node *stack, int size)
 
 	if (!stack)
 		return;
-	i = 0;
+	i = 1;
 	min = INT_MIN;
-	while (i < size)
+	while (i <= size)
 	{
 		min = next_bigger(stack, min);
 		temp = stack;
@@ -46,7 +46,6 @@ void	get_positions(t_stack_node *stack)
 
 	node = stack;
 	position = 1;
-
 	while (node)
 	{
 		node->position = position;

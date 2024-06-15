@@ -6,41 +6,44 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/14 20:33:02 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 01:44:18 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+#include <stdbool.h>
 
 // void	memory_leaks(void)
 // {
 // 	system("leaks push_swap");
 // }
 
-void	sort_3(t_stack_node *a)
+void	sort_3(t_stack_node **a)
 {
 	t_stack_node	*node;
 
-	if (!a)
+	if (!*a)
 		return;
-	node = a;
-	if (check_max(a)->value == node->value)
-		ra(&a,1);
-	else if (check_max(a)->value == node->next->value)
-		rra(&a,1);
-	check_if_sorted(a);
-	sa(&a,1);
+	node = *a;
+	if (check_max(*a)->value == node->value)
+		ra(a,1);
+	else if (check_max(*a)->value == node->next->value)
+		rra(a,1);
+	if (!check_if_sorted(*a))
+		sa(a,1);
+	while ((*a)->prev)
+		*a = (*a)->prev;
 }
 
-void	sort_stack(t_stack_node *a, int size)
+void	sort_stack(t_stack_node **a, t_stack_node **b, int size)
 {
 	if (size == 2)
-		sa(&a , 1);
+		sa(a , 1);
 	else if (size == 3)
 		sort_3(a);
 	else
-		big_sort(a, size);
+		big_sort(a, b, size);
 }
 
 int	main(int argc, char **argv)
@@ -56,33 +59,34 @@ int	main(int argc, char **argv)
 		return (1);
 	a = read_args(argc, argv);
 	// b = argsb(b);
-	check_if_sorted(a);
+	if (check_if_sorted(a))
+		free_and_exit(NULL, a, 1);
 	size = check_size(a);
-	sort_stack(a, size);
+	sort_stack(&a, &b, size);
 	//sa(&a, 1);
 
 // for testing and debugging
 
 	// // stack a
-	while (a->prev)
-		a=a->prev;
-	while (a->next)
-	{
-		printf("%d[%d] ", a->value, a->index);
-		a = a->next;
-	}
-	printf("%d[%d]\n", a->value, a->index);
-
-	// stack b
-	// while (b->prev != NULL)
-	// 	b=b->prev;
-	// while (b->next != NULL)
+	// while (a->prev)
+	// 	a=a->prev;
+	// while (a->next)
 	// {
-	// 	printf("%d ", b->value);
+	// 	printf("%d[%d](%d)|%d| ", a->value, a->index, a->position, a->above_median);
+	// 	a = a->next;
+	// }
+	// printf("%d[%d](%d)|%d| \n", a->value, a->index, a->position, a->above_median);
+
+	// // stack b
+	// // while (b->prev)
+	// // 	b=b->prev;
+	// while (b->next)
+	// {
+	// 	printf("%d[%d](%d)|%d| ", b->value, b->index, b->position, b->above_median);
 	// 	b = b->next;
 	// }
-	// printf("%d\n", b->value);
+	// printf("%d[%d](%d)|%d| \n", b->value, b->index, b->position, b->above_median);
 	free_stack(a);
-	// free_stack(b);
+	free_stack(b);
 	return (0);
 }

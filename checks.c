@@ -6,25 +6,24 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 06:04:06 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/15 20:18:19 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/15 22:56:56 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_if_sorted(t_stack_node *stack)
+int		check_if_sorted(t_stack_node *stack)
 {
 	if (!stack)
-		return;
+		error_fd(STDERR_FILENO);
 	while (stack->next != NULL)
 	{
 		if (stack->value < stack->next->value)
 			stack = stack->next;
 		else
-			return;
+			return (0);
 	}
-	free_stack (stack);
-	exit(EXIT_SUCCESS);
+	return (1);
 }
 
 int		check_size(t_stack_node *stack)
