@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 06:04:06 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/14 20:29:05 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/15 20:18:19 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,23 @@ t_stack_node *check_max(t_stack_node *stack)
 			max = node;
 	}
 	return (max);
+}
+
+void check_above_median(t_stack_node *stack, int size)
+{
+	t_stack_node *node;
+	int median_index;
+
+	median_index = size / 2;
+	node = stack;
+	while (node)
+	{
+		if (node->index > median_index)
+			node->above_median = true;
+		else
+			node->above_median = false;
+		node = node->next;
+	}
 }
 
 int 	next_bigger(t_stack_node *stack, int nb)
