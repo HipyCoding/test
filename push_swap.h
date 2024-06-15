@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/15 20:27:33 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/15 20:34:09 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack_node
 {
 	int						value;
 	int						index;
+	int						position;
 	bool					above_median;
 	bool					cheapest;
 	struct s_stack_node		*next;
