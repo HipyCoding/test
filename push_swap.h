@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 04:58:07 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 08:38:43 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_stack_node
 	int						target_position;
 	int						cost_a;
 	int						cost_b;
+	int						cost_total;
 	bool					above_median;
 	bool					cheapest;
 	struct s_stack_node		*next;
@@ -62,12 +63,14 @@ char		**ft_split(char const *s, char c);
 void		free_2d_string(char **ptr);
 void		free_stack(t_stack_node *stack);
 void		free_and_exit(char **ptr, t_stack_node *stack, int	i);
+int 		absolute (int nb);
 
 //sorting utils
 void	assign_index(t_stack_node *stack, int size);
 void	get_positions(t_stack_node *stack);
 void	get_target_positions(t_stack_node **a, t_stack_node **b);
-void	get_costs(t_stack_node **a, t_stack_node **b, int size_a, int size_b);
+void	get_costs(t_stack_node **a, int size_a, int size_b);
+void	find_cheapest(t_stack_node **stack);
 
 //checks
 int			check_if_sorted(t_stack_node *stack);
