@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 06:04:06 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/15 22:56:56 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 10:21:46 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 int		check_if_sorted(t_stack_node *stack)
 {
+	t_stack_node *node;
+
 	if (!stack)
 		error_fd(STDERR_FILENO);
-	while (stack->next != NULL)
+	node = stack;
+	while (node->next != NULL)
 	{
-		if (stack->value < stack->next->value)
-			stack = stack->next;
+		if (node->value < node->next->value)
+			node = node->next;
 		else
 			return (0);
 	}

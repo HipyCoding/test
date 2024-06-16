@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 04:39:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 08:55:07 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 10:49:55 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void fill_stack_b(t_stack_node **a, t_stack_node **b, int size)
 		size--;
 	}
 	sort_3(a);
-	get_positions(*a);
-	get_positions(*b);
 }
 
 void	move_positive(t_stack_node **a, t_stack_node **b)
@@ -82,13 +80,41 @@ void	push_element_to_a(t_stack_node **a, t_stack_node **b)
 	pa(b, a, 1);
 }
 
+void rotate(t_stack_node **a, int size)
+{
+	int i = 0;
+	get_positions(*a);
+	if (check_max(*a)->position > size / 2)
+	{
+		while (!check_if_sorted(*a) && i < 10)
+		{
+			i++;
+			rra(a, 1);
+		}
+	}
+	else 
+	{
+		while (!check_if_sorted(*a) && i < 10)
+		{
+			i++;
+			ra(a, 1);
+		}
+	}
+}
+
 void	big_sort(t_stack_node **a, t_stack_node **b, int size)
 {
 	assign_index(*a, size);
 	check_above_median(*a, size);
 	fill_stack_b(a, b, size);
+	while (*b)
+	{
+	get_positions(*a);
+	get_positions(*b);
 	get_target_positions(a, b);
 	get_costs(b, check_size(*a), check_size(*b));
 	find_cheapest(b);
 	push_element_to_a(a, b);
+	}
+	rotate(a, size);
 }

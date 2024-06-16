@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:55:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 08:37:27 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 10:34:18 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	get_target_positions(t_stack_node **a, t_stack_node **b)
 			node_a = node_a->next;
 		}
 		if(prev_value == INT_MIN)
-			node_b->target_position = 1;
+			node_b->target_position = 0;
 		node_a = *a;
 		node_b = node_b->next;
 	}

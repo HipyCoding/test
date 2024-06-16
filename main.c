@@ -6,13 +6,16 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 01:44:18 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 10:45:10 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 #include <stdbool.h>
+
+// for leak checking in github codespace:
+// valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./push_swap
 
 // void	memory_leaks(void)
 // {
@@ -63,29 +66,28 @@ int	main(int argc, char **argv)
 		free_and_exit(NULL, a, 1);
 	size = check_size(a);
 	sort_stack(&a, &b, size);
-	//sa(&a, 1);
 
 // for testing and debugging
 
 	// // stack a
-	// while (a->prev)
-	// 	a=a->prev;
-	// while (a->next)
-	// {
-	// 	printf("%d[%d](%d)|%d| ", a->value, a->index, a->position, a->above_median);
-	// 	a = a->next;
-	// }
-	// printf("%d[%d](%d)|%d| \n", a->value, a->index, a->position, a->above_median);
+	while (a->prev)
+		a=a->prev;
+	while (a->next)
+	{
+		printf("%d[%d](%d) ", a->value, a->index, a->target_position);
+		a = a->next;
+	}
+	printf("%d[%d](%d)\n", a->value, a->index, a->target_position);
 
 	// // stack b
-	// // while (b->prev)
-	// // 	b=b->prev;
+	// while (b->prev)
+	// 	b=b->prev;
 	// while (b->next)
 	// {
-	// 	printf("%d[%d](%d)|%d| ", b->value, b->index, b->position, b->above_median);
+	// 	printf("%d[%d](%d)|%d|<%d> a%d b%d  ", b->value, b->index, b->position, b->above_median, b->target_position, b->cost_a, b->cost_b);
 	// 	b = b->next;
 	// }
-	// printf("%d[%d](%d)|%d| \n", b->value, b->index, b->position, b->above_median);
+	// printf("%d[%d](%d)|%d|<%d> a%d b%d \n", b->value, b->index, b->position, b->above_median, b->target_position, b->cost_a, b->cost_b);
 	free_stack(a);
 	free_stack(b);
 	return (0);
