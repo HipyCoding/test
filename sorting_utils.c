@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:55:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 04:56:38 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 05:30:37 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	get_costs(t_stack_node **a, t_stack_node **b, int size_a, int size_b)
 			node_b->cost_a = node_b->target_position;
 		node_b = node_b->next;
 	}
+	
 }
 
 

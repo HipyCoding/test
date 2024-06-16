@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 04:39:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 05:05:49 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 05:30:29 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ void	big_sort(t_stack_node **a, t_stack_node **b, int size)
 	fill_stack_b(a, b, size);
 	get_target_positions(a, b);
 	get_costs(a, b, check_size(*a), check_size(*b));
+	
 }
