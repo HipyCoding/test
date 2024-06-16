@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 01:31:20 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 04:58:07 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ typedef struct s_stack_node
 	int						value;
 	int						index;
 	int						position;
+	int						target_position;
+	int						cost_a;
+	int						cost_b;
 	bool					above_median;
 	bool					cheapest;
 	struct s_stack_node		*next;
@@ -32,10 +35,9 @@ typedef struct s_stack_node
 
 //stack handling
 t_stack_node	*read_args (int argc, char **argv);
-t_stack_node	*argsb ();//for testing
 void			add_node (t_stack_node **stack, int nb);
 
-//stack commands
+//stack operations
 void			sa(t_stack_node **stack_a, int print);
 void			sb(t_stack_node **stack_a, int print);
 void			ss(t_stack_node **stack_a, t_stack_node **stack_b, int print);
@@ -64,6 +66,8 @@ void		free_and_exit(char **ptr, t_stack_node *stack, int	i);
 //sorting utils
 void	assign_index(t_stack_node *stack, int size);
 void	get_positions(t_stack_node *stack);
+void	get_target_positions(t_stack_node **a, t_stack_node **b);
+void	get_costs(t_stack_node **a, t_stack_node **b, int size_a, int size_b);
 
 //checks
 int			check_if_sorted(t_stack_node *stack);
