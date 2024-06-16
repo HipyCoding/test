@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:55:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 05:30:37 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 08:37:27 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void assign_index(t_stack_node *stack, int size)
 
 	if (!stack)
 		return;
-	i = 1;
+	i = 0;
 	min = INT_MIN;
-	while (i <= size)
+	while (i < size)
 	{
 		min = next_bigger(stack, min);
 		temp = stack;
@@ -45,7 +45,7 @@ void	get_positions(t_stack_node *stack)
 	int				position;
 
 	node = stack;
-	position = 1;
+	position = 0;
 	while (node)
 	{
 		node->position = position;
@@ -81,12 +81,10 @@ void	get_target_positions(t_stack_node **a, t_stack_node **b)
 	}
 }
 
-void	get_costs(t_stack_node **a, t_stack_node **b, int size_a, int size_b)
+void	get_costs(t_stack_node **b, int size_a, int size_b)
 {
-	t_stack_node	*node_a;
 	t_stack_node	*node_b;
 
-	node_a = *a;
 	node_b = *b;
 	while(node_b)
 	{
@@ -98,10 +96,38 @@ void	get_costs(t_stack_node **a, t_stack_node **b, int size_a, int size_b)
 			node_b->cost_a = (size_a - node_b->target_position) * (-1);
 		else
 			node_b->cost_a = node_b->target_position;
+		if (node_b->cost_a > 0 && node_b->cost_b > 0)
+			node_b->cost_total = absolute(node_b->cost_a - node_b->cost_b);
+		else if ((node_b->cost_a < 0 && node_b->cost_b < 0))
+			node_b->cost_total = absolute(node_b->cost_a - node_b->cost_b) * (-1);
+		else
+			node_b->cost_total = absolute(node_b->cost_a) + absolute(node_b->cost_b);
 		node_b = node_b->next;
 	}
-	
 }
+
+void	find_cheapest(t_stack_node **b)
+{
+	t_stack_node	*node;
+	t_stack_node	*cheapest;
+	int				cost;
+
+	cost = INT_MAX;
+	node = *b;
+	cheapest = *b;
+	while(node)
+	{
+		if (node->cost_total < cost)
+		{
+			cost = node->cost_total;
+			cheapest = node;
+		}
+		node = node->next;
+	}
+	cheapest->cheapest = true;
+}
+
+
 
 
 // TODO: 
