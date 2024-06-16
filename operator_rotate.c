@@ -15,19 +15,19 @@
 void	ra(t_stack_node **stack_a, int print)
 {
 	t_stack_node  *temp;
+	t_stack_node	*end;
 
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return;
 	temp = *stack_a;
-	(*stack_a)->next->prev = NULL;
+	end = *stack_a;
 	*stack_a = (*stack_a)->next;
-	while ((*stack_a)->next != NULL)
-		*stack_a = (*stack_a)->next;
-	(*stack_a)->next = temp;
-	temp->prev = *stack_a;
+	(*stack_a)->prev = NULL;
+	while (end->next != NULL)
+		end = end->next;
+	end->next = temp;
+	temp->prev = end;
 	temp->next = NULL;
-	while ((*stack_a)->prev != NULL )
-		*stack_a = (*stack_a)->prev;
 	if (print)
 		putstr_fd("ra\n", STDERR_FILENO);
 }
@@ -35,19 +35,19 @@ void	ra(t_stack_node **stack_a, int print)
 void	rb(t_stack_node **stack_b, int print)
 {
 	t_stack_node  *temp;
+	t_stack_node	*end;
 
 	if (*stack_b == NULL || (*stack_b)->next == NULL)
 		return;
 	temp = *stack_b;
-	(*stack_b)->next->prev = NULL;
+	end = *stack_b;
 	*stack_b = (*stack_b)->next;
-	while ((*stack_b)->next != NULL)
-		*stack_b = (*stack_b)->next;
-	(*stack_b)->next = temp;
-	temp->prev = *stack_b;
+	(*stack_b)->prev = NULL;
+	while (end->next != NULL)
+		end = end->next;
+	end->next = temp;
+	temp->prev = end;
 	temp->next = NULL;
-	while ((*stack_b)->prev != NULL )
-		*stack_b = (*stack_b)->prev;
 	if (print)
 		putstr_fd("rb\n", STDERR_FILENO);
 }
