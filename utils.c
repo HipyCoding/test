@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:51:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/13 02:38:21 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/16 06:53:58 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,11 @@ void	putstr_fd(char *s, int fd)
 		write(fd, s, 1);
 		s++;
 	}
+}
+
+int		absolute (int nb)
+{
+	if (nb < 0)
+		nb = nb * (-1);
+	return (nb);
 }
