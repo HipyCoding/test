@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 10:45:10 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:19:05 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,14 @@
 
 void	sort_3(t_stack_node **a)
 {
-	t_stack_node	*node;
-
 	if (!*a)
 		return;
-	node = *a;
-	if (check_max(*a)->value == node->value)
+	if (check_max(*a)->value == (*a)->value)
 		ra(a,1);
-	else if (check_max(*a)->value == node->next->value)
+	else if (check_max(*a)->value == (*a)->next->value)
 		rra(a,1);
 	if (!check_if_sorted(*a))
 		sa(a,1);
-	while ((*a)->prev)
-		*a = (*a)->prev;
 }
 
 void	sort_stack(t_stack_node **a, t_stack_node **b, int size)
@@ -63,11 +58,13 @@ int	main(int argc, char **argv)
 	a = read_args(argc, argv);
 	// b = argsb(b);
 	if (check_if_sorted(a))
-		free_and_exit(NULL, a, 1);
+		free_and_exit(NULL, &a, 21);
 	size = check_size(a);
 	sort_stack(&a, &b, size);
 
 // for testing and debugging
+
+// 10 7 2 5  19 1 -2
 
 	// // stack a
 	while (a->prev)
@@ -88,7 +85,7 @@ int	main(int argc, char **argv)
 	// 	b = b->next;
 	// }
 	// printf("%d[%d](%d)|%d|<%d> a%d b%d \n", b->value, b->index, b->position, b->above_median, b->target_position, b->cost_a, b->cost_b);
-	free_stack(a);
-	free_stack(b);
+	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }
