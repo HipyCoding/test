@@ -6,26 +6,26 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:55:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 10:34:18 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/17 04:19:17 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void assign_index(t_stack_node *stack, int size)
+void assign_index(t_stack_node **stack, int size)
 {
 	int				i;
 	int				min;
 	t_stack_node	*temp;
 
-	if (!stack)
+	if (!*stack)
 		return;
 	i = 0;
 	min = INT_MIN;
 	while (i < size)
 	{
-		min = next_bigger(stack, min);
-		temp = stack;
+		min = next_bigger(*stack, min);
+		temp = *stack;
 		while (temp)
 		{
 			if (temp->value == min)
@@ -96,10 +96,11 @@ void	get_costs(t_stack_node **b, int size_a, int size_b)
 			node_b->cost_a = (size_a - node_b->target_position) * (-1);
 		else
 			node_b->cost_a = node_b->target_position;
-		if (node_b->cost_a > 0 && node_b->cost_b > 0)
-			node_b->cost_total = absolute(node_b->cost_a - node_b->cost_b);
-		else if ((node_b->cost_a < 0 && node_b->cost_b < 0))
-			node_b->cost_total = absolute(node_b->cost_a - node_b->cost_b) * (-1);
+		if ((node_b->cost_a > 0 && node_b->cost_b > 0) || (node_b->cost_a < 0 && node_b->cost_b < 0))
+			if (absolute(node_b->cost_a) >= absolute(node_b->cost_b))
+				node_b->cost_total = absolute(node_b->cost_a);
+			else
+				node_b->cost_total = absolute(node_b->cost_b);
 		else
 			node_b->cost_total = absolute(node_b->cost_a) + absolute(node_b->cost_b);
 		node_b = node_b->next;
@@ -126,14 +127,3 @@ void	find_cheapest(t_stack_node **b)
 	}
 	cheapest->cheapest = true;
 }
-
-
-
-
-// TODO: 
-// 	cheapest node function,
-		// calculate which node needs the least amount of moves
-		// to go into target position in stack a
-		// eventually find out if possible ,if we can rr/rrr
-		// instead of rb + ra/rrb + rra
-// 	sorting function which does the actual moves
