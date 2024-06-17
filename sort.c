@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 04:39:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 10:49:55 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:04:00 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,26 @@
 
 void fill_stack_b(t_stack_node **a, t_stack_node **b, int size)
 {
-	while (size > 3)
+	int				pushed;
+	int				i;
+
+	pushed = 0;
+	i = 0;
+	while (i < size && size > 6 && pushed < size / 2)
+	{
+		if ((*a)->above_median == 0)
+		{
+			pb(a, b, 1);
+			pushed++;
+		}
+		else
+			ra(a, 1);
+		i++;
+	}
+	while (size - pushed > 3)
 	{
 		pb(a, b, 1);
-		size--;
+		pushed++;
 	}
 	sort_3(a);
 }
@@ -82,30 +98,29 @@ void	push_element_to_a(t_stack_node **a, t_stack_node **b)
 
 void rotate(t_stack_node **a, int size)
 {
-	int i = 0;
 	get_positions(*a);
 	if (check_max(*a)->position > size / 2)
 	{
-		while (!check_if_sorted(*a) && i < 10)
+		while (check_max(*a)->position!=  check_max(*a)->index)
 		{
-			i++;
 			rra(a, 1);
+			get_positions(*a);
 		}
 	}
 	else 
 	{
-		while (!check_if_sorted(*a) && i < 10)
+		while (check_max(*a)->position !=  check_max(*a)->index)
 		{
-			i++;
 			ra(a, 1);
+			get_positions(*a);
 		}
 	}
 }
 
 void	big_sort(t_stack_node **a, t_stack_node **b, int size)
 {
-	assign_index(*a, size);
-	check_above_median(*a, size);
+	assign_index(a, size);
+	check_above_median(a, size);
 	fill_stack_b(a, b, size);
 	while (*b)
 	{
@@ -118,3 +133,10 @@ void	big_sort(t_stack_node **a, t_stack_node **b, int size)
 	}
 	rotate(a, size);
 }
+
+// TODO
+// debugging 
+// 		sometimes element gets lost
+// 		sometimes it sorts into 2 sequences of numbers correct, but not one
+// 		memory leaks and valgrind errors
+// find visualizer to test on huge stack
