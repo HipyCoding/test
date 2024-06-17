@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 06:04:06 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 10:21:46 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/17 04:56:05 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		check_if_sorted(t_stack_node *stack)
 	if (!stack)
 		error_fd(STDERR_FILENO);
 	node = stack;
-	while (node->next != NULL)
+	while (node->next)
 	{
 		if (node->value < node->next->value)
 			node = node->next;
@@ -61,13 +61,13 @@ t_stack_node *check_max(t_stack_node *stack)
 	return (max);
 }
 
-void check_above_median(t_stack_node *stack, int size)
+void check_above_median(t_stack_node **stack, int size)
 {
 	t_stack_node *node;
 	int median_index;
 
 	median_index = size / 2;
-	node = stack;
+	node = *stack;
 	while (node)
 	{
 		if (node->index > median_index)
