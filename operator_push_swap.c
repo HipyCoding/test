@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_and_swap.c                                    :+:      :+:    :+:   */
+/*   operator_push_swap.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:32:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/10 18:23:39 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/17 00:30:41 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sa(t_stack_node **stack_a, int print)
 	temp->prev = *stack_a;
 	(*stack_a)->next = temp;
 	if (print == 1)
-		putstr_fd("sa\n", STDERR_FILENO);
+		putstr_fd("sa\n", 1);
 }
 
 void	sb(t_stack_node **stack_b, int print)
@@ -41,7 +41,7 @@ void	sb(t_stack_node **stack_b, int print)
 	temp->prev = *stack_b;
 	(*stack_b)->next = temp;
 	if (print == 1)
-		putstr_fd("sb\n", STDERR_FILENO);
+		putstr_fd("sb\n", 1);
 }
 
 void	ss(t_stack_node **stack_a, t_stack_node **stack_b, int print)
@@ -49,7 +49,7 @@ void	ss(t_stack_node **stack_a, t_stack_node **stack_b, int print)
 	sa(stack_a, 0);
 	sb(stack_b, 0);
 	if (print)
-		putstr_fd("ss\n", STDERR_FILENO);
+		putstr_fd("ss\n", 1);
 }
 
 // (src	-> dest);
@@ -78,7 +78,7 @@ void	pa(t_stack_node **stack_b, t_stack_node **stack_a, int print)
 	temp->prev = NULL;
 	*stack_a = temp;
 	if (print)
-		putstr_fd("pa\n", STDERR_FILENO);
+		putstr_fd("pa\n", 1);
 }
 
 void	pb(t_stack_node **stack_a, t_stack_node **stack_b, int print)
@@ -105,5 +105,5 @@ void	pb(t_stack_node **stack_a, t_stack_node **stack_b, int print)
 	temp->prev = NULL;
 	(*stack_b) = temp;
 	if (print)
-		putstr_fd("pb\n", STDERR_FILENO);
+		putstr_fd("pb\n", 1);
 }

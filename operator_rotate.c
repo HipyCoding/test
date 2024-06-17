@@ -29,7 +29,7 @@ void	ra(t_stack_node **stack_a, int print)
 	temp->prev = end;
 	temp->next = NULL;
 	if (print)
-		putstr_fd("ra\n", STDERR_FILENO);
+		putstr_fd("ra\n", 1);
 }
 
 void	rb(t_stack_node **stack_b, int print)
@@ -49,7 +49,7 @@ void	rb(t_stack_node **stack_b, int print)
 	temp->prev = end;
 	temp->next = NULL;
 	if (print)
-		putstr_fd("rb\n", STDERR_FILENO);
+		putstr_fd("rb\n", 1);
 }
 
 void	rr(t_stack_node **stack_a, t_stack_node **stack_b, int print)
@@ -57,5 +57,5 @@ void	rr(t_stack_node **stack_a, t_stack_node **stack_b, int print)
 	ra(stack_a, 0);
 	rb(stack_b, 0);
 	if (print)
-		putstr_fd("rr\n", STDERR_FILENO);
+		putstr_fd("rr\n", 1);
 }
