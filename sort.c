@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 04:39:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/17 16:04:00 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 02:59:26 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,17 @@ void	push_element_to_a(t_stack_node **a, t_stack_node **b)
 
 void rotate(t_stack_node **a, int size)
 {
+	int	i;
+	
+	i = 0;
 	get_positions(*a);
 	if (check_max(*a)->position > size / 2)
 	{
 		while (check_max(*a)->position!=  check_max(*a)->index)
 		{
+			get_positions(*a);
 			rra(a, 1);
+			i++;
 			get_positions(*a);
 		}
 	}
@@ -111,7 +116,9 @@ void rotate(t_stack_node **a, int size)
 	{
 		while (check_max(*a)->position !=  check_max(*a)->index)
 		{
+			get_positions(*a);
 			ra(a, 1);
+			i++;
 			get_positions(*a);
 		}
 	}
