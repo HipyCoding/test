@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 09:02:23 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:25:49 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void			find_cheapest(t_stack_node **stack);
 int				check_if_sorted(t_stack_node *stack);
 int				check_size(t_stack_node *stack);
 t_stack_node	*check_max(t_stack_node *stack);
-int				next_bigger(t_stack_node *stack, int nb);
+int				next_bigger(t_stack_node *stack, long int nb);
 void			check_above_median(t_stack_node **stack, int size);
 
 #endif
