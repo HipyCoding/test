@@ -12,50 +12,40 @@
 
 #include "push_swap.h"
 
-void	ra(t_stack_node **stack_a, int print)
+static void	rotate(t_stack_node **stack)
 {
-	t_stack_node  *temp;
-	t_stack_node	*end;
+	t_stack_node	*temp;
 
-	if (*stack_a == NULL || (*stack_a)->next == NULL)
+	if (!*stack || (*stack)->next == NULL)
 		return;
-	temp = *stack_a;
-	end = *stack_a;
-	*stack_a = (*stack_a)->next;
-	(*stack_a)->prev = NULL;
-	while (end->next != NULL)
-		end = end->next;
-	end->next = temp;
-	temp->prev = end;
-	temp->next = NULL;
+	temp = *stack;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	temp->next->next = NULL;
+	temp->next->prev = temp;
+}	
+
+void	ra(t_stack_node **a, int print)
+{
+	rotate(a);
 	if (print)
-		putstr_fd("ra\n", 1);
+		putstr_fd("ra\n",1);
 }
 
-void	rb(t_stack_node **stack_b, int print)
+void	rb(t_stack_node **b, int print)
 {
-	t_stack_node  *temp;
-	t_stack_node	*end;
-
-	if (*stack_b == NULL || (*stack_b)->next == NULL)
-		return;
-	temp = *stack_b;
-	end = *stack_b;
-	*stack_b = (*stack_b)->next;
-	(*stack_b)->prev = NULL;
-	while (end->next != NULL)
-		end = end->next;
-	end->next = temp;
-	temp->prev = end;
-	temp->next = NULL;
+	rotate(b);
 	if (print)
-		putstr_fd("rb\n", 1);
+		putstr_fd("rb\n",1);
 }
 
-void	rr(t_stack_node **stack_a, t_stack_node **stack_b, int print)
+void	rr(t_stack_node **a, t_stack_node **b, int print)
 {
-	ra(stack_a, 0);
-	rb(stack_b, 0);
+	rotate(a);
+	rotate(b);
 	if (print)
-		putstr_fd("rr\n", 1);
+		putstr_fd("rr\n",1);
 }

@@ -1,51 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operator_rev_rotate.c                              :+:      :+:    :+:   */
+/*   operator_swap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 20:32:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 06:02:49 by candrese         ###   ########.fr       */
+/*   Created: 2024/06/18 05:38:39 by candrese          #+#    #+#             */
+/*   Updated: 2024/06/18 06:03:43 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rev_rotate(t_stack_node **stack)
+static void	swap(t_stack_node **stack)
 {
+	t_stack_node	*node;
 	t_stack_node	*temp;
 
-	if (!*stack || (*stack)->next == NULL)
+	if (!*stack || !(*stack)->next)
 		return ;
-	temp = *stack;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = *stack;
-	temp->prev->next = NULL;
+	node = *stack;
+	temp = node->next;
 	temp->prev = NULL;
+	node->next = temp->next;
+	temp->next = node;
+	node->prev = temp;
 	*stack = temp;
-	temp->next->prev = temp;
+	if (node->next)
+		node->next->prev = node;
 }
 
-void	rra(t_stack_node **a, int print)
+void	sa(t_stack_node **a, int print)
 {
-	rev_rotate(a);
+	swap(a);
 	if (print)
-		putstr_fd("rra\n",1);
+		putstr_fd("sa\n",1);
 }
 
-void	rrb(t_stack_node **b, int print)
+void	sb(t_stack_node **b, int print)
 {
-	rev_rotate(b);
+	swap(b);
 	if (print)
-		putstr_fd("rrb\n",1);
+		putstr_fd("sb\n",1);
 }
 
-void	rrr(t_stack_node **a, t_stack_node **b, int print)
+void	ss(t_stack_node **a, t_stack_node **b, int print)
 {
-	rev_rotate(a);
-	rev_rotate(b);
+	swap(a);
+	swap(b);
 	if (print)
-		putstr_fd("rrr\n",1);
+		putstr_fd("ss\n",1);
 }
