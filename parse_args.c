@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:20:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 09:14:29 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:25:08 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	dup_check(t_stack_node *stack, int *error)
 void	assign_index(t_stack_node **stack, int size)
 {
 	int				i;
-	int				min;
+	long int		min;
 	t_stack_node	*temp;
 
 	if (!*stack)
 		return ;
 	i = 0;
-	min = INT_MIN;
+	min = LONG_MIN;
 	while (i < size)
 	{
 		min = next_bigger(*stack, min);
