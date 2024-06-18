@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:20:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 07:12:13 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:14:29 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	dup_check(t_stack_node *stack, int *error)
 	if (!stack)
 	{
 		*error = 1;
-		return;
+		return ;
 	}
 	check = NULL;
 	node = stack;
@@ -32,7 +32,7 @@ void	dup_check(t_stack_node *stack, int *error)
 			if (node->value == check->value)
 			{
 				*error = 1;
-				return;
+				return ;
 			}
 			check = check->next;
 		}
@@ -40,14 +40,41 @@ void	dup_check(t_stack_node *stack, int *error)
 	}
 }
 
-void	add_node (t_stack_node **stack, int value)
+void	assign_index(t_stack_node **stack, int size)
 {
-	t_stack_node *new;
-	t_stack_node *prev;
+	int				i;
+	int				min;
+	t_stack_node	*temp;
+
+	if (!*stack)
+		return ;
+	i = 0;
+	min = INT_MIN;
+	while (i < size)
+	{
+		min = next_bigger(*stack, min);
+		temp = *stack;
+		while (temp)
+		{
+			if (temp->value == min)
+			{
+				temp->index = i;
+				i++;
+				break ;
+			}
+			temp = temp->next;
+		}
+	}
+}
+
+void	add_node(t_stack_node **stack, int value)
+{
+	t_stack_node	*new;
+	t_stack_node	*prev;
 
 	new = ft_calloc(1, sizeof(t_stack_node));
 	if (!new)
-		return;
+		return ;
 	new->next = NULL;
 	new->value = value;
 	if (!*stack)

@@ -1,12 +1,12 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   operator_rotate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 19:08:59 by candrese          #+#    #+#             */
-/*   Updated: 2024/05/14 21:29:11 by candrese         ###   ########.fr       */
+/*   Created: 2024/06/18 08:31:11 by candrese          #+#    #+#             */
+/*   Updated: 2024/06/18 08:31:46 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	rotate(t_stack_node **stack)
 	t_stack_node	*temp;
 
 	if (!*stack || (*stack)->next == NULL)
-		return;
+		return ;
 	temp = *stack;
 	while (temp->next)
 		temp = temp->next;
@@ -26,20 +26,20 @@ static void	rotate(t_stack_node **stack)
 	(*stack)->prev = NULL;
 	temp->next->next = NULL;
 	temp->next->prev = temp;
-}	
+}
 
 void	ra(t_stack_node **a, int print)
 {
 	rotate(a);
 	if (print)
-		putstr_fd("ra\n",1);
+		putstr_fd("ra\n", 1);
 }
 
 void	rb(t_stack_node **b, int print)
 {
 	rotate(b);
 	if (print)
-		putstr_fd("rb\n",1);
+		putstr_fd("rb\n", 1);
 }
 
 void	rr(t_stack_node **a, t_stack_node **b, int print)
@@ -47,5 +47,5 @@ void	rr(t_stack_node **a, t_stack_node **b, int print)
 	rotate(a);
 	rotate(b);
 	if (print)
-		putstr_fd("rr\n",1);
+		putstr_fd("rr\n", 1);
 }

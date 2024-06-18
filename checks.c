@@ -6,15 +6,15 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 06:04:06 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/17 18:30:06 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 08:24:18 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		check_if_sorted(t_stack_node *stack)
+int	check_if_sorted(t_stack_node *stack)
 {
-	t_stack_node *node;
+	t_stack_node	*node;
 
 	if (!stack)
 		error_fd(STDERR_FILENO);
@@ -28,7 +28,7 @@ int		check_if_sorted(t_stack_node *stack)
 	return (1);
 }
 
-int		check_size(t_stack_node *stack)
+int	check_size(t_stack_node *stack)
 {
 	int	size;
 
@@ -43,14 +43,13 @@ int		check_size(t_stack_node *stack)
 	return (size);
 }
 
-t_stack_node *check_max(t_stack_node *stack)
+t_stack_node	*check_max(t_stack_node *stack)
 {
-	t_stack_node *max;
-	t_stack_node *node;
+	t_stack_node	*max;
+	t_stack_node	*node;
 
 	max = stack;
 	node = stack;
-
 	while (node->next)
 	{
 		node = node->next;
@@ -60,10 +59,10 @@ t_stack_node *check_max(t_stack_node *stack)
 	return (max);
 }
 
-void check_above_median(t_stack_node **stack, int size)
+void	check_above_median(t_stack_node **stack, int size)
 {
-	t_stack_node *node;
-	int median_index;
+	t_stack_node	*node;
+	int				median_index;
 
 	median_index = size / 2;
 	node = *stack;
@@ -77,7 +76,7 @@ void check_above_median(t_stack_node **stack, int size)
 	}
 }
 
-int 	next_bigger(t_stack_node *stack, int nb)
+int	next_bigger(t_stack_node *stack, int nb)
 {
 	int				min;
 	bool			new;

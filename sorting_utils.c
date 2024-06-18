@@ -6,45 +6,17 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:55:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 02:49:29 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:11:16 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void assign_index(t_stack_node **stack, int size)
-{
-	int				i;
-	int				min;
-	t_stack_node	*temp;
-
-	if (!*stack)
-		return;
-	i = 0;
-	min = INT_MIN;
-	while (i < size)
-	{
-		min = next_bigger(*stack, min);
-		temp = *stack;
-		while (temp)
-		{
-			if (temp->value == min)
-			{
-				temp->index = i;
-				i++;
-				break ;
-			}
-			temp = temp->next;
-		}
-	}
-}
 
 void	target_of_biggest(t_stack_node **a, t_stack_node *b)
 {
 	t_stack_node	*node;
 
 	node = b;
-
 	node->target_position = check_max(*a)->position + 1;
 	if (check_max(*a)->position == check_size(*a) - 1)
 		node->target_position = 0;
@@ -70,13 +42,13 @@ void	get_target_positions(t_stack_node **a, t_stack_node **b)
 	t_stack_node	*node_a;
 	t_stack_node	*node_b;
 	int				prev_value;
-	
+
 	node_a = *a;
 	node_b = *b;
 	while (node_b)
 	{
 		prev_value = INT_MAX;
-		while(node_a)
+		while (node_a)
 		{
 			if (node_b->value < node_a->value && node_a->value < prev_value)
 			{
@@ -85,7 +57,7 @@ void	get_target_positions(t_stack_node **a, t_stack_node **b)
 			}
 			node_a = node_a->next;
 		}
-		if(prev_value == INT_MAX)
+		if (prev_value == INT_MAX)
 			target_of_biggest(a, node_b);
 		node_a = *a;
 		node_b = node_b->next;
@@ -97,7 +69,7 @@ void	get_costs(t_stack_node **b, int size_a, int size_b)
 	t_stack_node	*node_b;
 
 	node_b = *b;
-	while(node_b)
+	while (node_b)
 	{
 		if (node_b->position > size_b / 2)
 			node_b->cost_b = (size_b - node_b->position) * (-1);
@@ -107,13 +79,15 @@ void	get_costs(t_stack_node **b, int size_a, int size_b)
 			node_b->cost_a = (size_a - node_b->target_position) * (-1);
 		else
 			node_b->cost_a = node_b->target_position;
-		if ((node_b->cost_a > 0 && node_b->cost_b > 0) || (node_b->cost_a < 0 && node_b->cost_b < 0))
+		if ((node_b->cost_a > 0 && node_b->cost_b > 0)
+			|| (node_b->cost_a < 0 && node_b->cost_b < 0))
 			if (absolute(node_b->cost_a) >= absolute(node_b->cost_b))
 				node_b->cost_total = absolute(node_b->cost_a);
-			else
-				node_b->cost_total = absolute(node_b->cost_b);
 		else
-			node_b->cost_total = absolute(node_b->cost_a) + absolute(node_b->cost_b);
+			node_b->cost_total = absolute(node_b->cost_b);
+		else
+			node_b->cost_total = absolute(node_b->cost_a)
+				+ absolute(node_b->cost_b);
 		node_b = node_b->next;
 	}
 }
@@ -127,7 +101,7 @@ void	find_cheapest(t_stack_node **b)
 	cost = INT_MAX;
 	node = *b;
 	cheapest = *b;
-	while(node)
+	while (node)
 	{
 		if (node->cost_total < cost)
 		{

@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 22:14:28 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/17 04:51:49 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 08:26:16 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	error_fd(int fd)
 	exit(1);
 }
 
-void	free_and_exit(char **ptr, t_stack_node **stack, int	i)
+void	free_and_exit(char **ptr, t_stack_node **stack, int i)
 {
 	if (i == 0 || i == 10 || i == 20)
 		free_2d_string(ptr);
@@ -31,7 +31,7 @@ void	free_and_exit(char **ptr, t_stack_node **stack, int	i)
 	}
 	if (i >= 10 && i <= 12)
 		error_fd(STDERR_FILENO);
-	else if (i >=20 && i <= 22)
+	else if (i >= 20 && i <= 22)
 		exit(0);
 }
 
@@ -41,7 +41,7 @@ void	free_2d_string(char **ptr)
 
 	i = 0;
 	if (!ptr)
-		return;
+		return ;
 	while (ptr[i])
 	{
 		free(ptr[i]);
@@ -56,7 +56,7 @@ void	free_stack(t_stack_node **stack)
 	t_stack_node	*to_free;
 
 	if (!stack)
-		return;
+		return ;
 	to_free = *stack;
 	while (to_free)
 	{
@@ -66,4 +66,3 @@ void	free_stack(t_stack_node **stack)
 	}
 	*stack = NULL;
 }
-

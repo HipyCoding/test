@@ -6,13 +6,13 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 04:39:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 02:59:26 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 08:44:03 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void fill_stack_b(t_stack_node **a, t_stack_node **b, int size)
+void	fill_stack_b(t_stack_node **a, t_stack_node **b, int size)
 {
 	int				pushed;
 	int				i;
@@ -40,7 +40,7 @@ void fill_stack_b(t_stack_node **a, t_stack_node **b, int size)
 
 void	move_positive(t_stack_node **a, t_stack_node **b)
 {
-	t_stack_node *node;
+	t_stack_node	*node;
 
 	node = *b;
 	while (node && node->cheapest == false)
@@ -63,10 +63,9 @@ void	move_positive(t_stack_node **a, t_stack_node **b)
 	}
 }
 
-
 void	move_negative(t_stack_node **a, t_stack_node **b)
 {
-	t_stack_node *node;
+	t_stack_node	*node;
 
 	node = *b;
 	while (node && node->cheapest == false)
@@ -96,15 +95,15 @@ void	push_element_to_a(t_stack_node **a, t_stack_node **b)
 	pa(b, a, 1);
 }
 
-void rotate(t_stack_node **a, int size)
+void	rotate_until_sorted(t_stack_node **a, int size)
 {
 	int	i;
-	
+
 	i = 0;
 	get_positions(*a);
 	if (check_max(*a)->position > size / 2)
 	{
-		while (check_max(*a)->position!=  check_max(*a)->index)
+		while (check_max(*a)->position != check_max(*a)->index)
 		{
 			get_positions(*a);
 			rra(a, 1);
@@ -112,9 +111,9 @@ void rotate(t_stack_node **a, int size)
 			get_positions(*a);
 		}
 	}
-	else 
+	else
 	{
-		while (check_max(*a)->position !=  check_max(*a)->index)
+		while (check_max(*a)->position != check_max(*a)->index)
 		{
 			get_positions(*a);
 			ra(a, 1);
@@ -124,26 +123,19 @@ void rotate(t_stack_node **a, int size)
 	}
 }
 
-void	big_sort(t_stack_node **a, t_stack_node **b, int size)
-{
-	assign_index(a, size);
-	check_above_median(a, size);
-	fill_stack_b(a, b, size);
-	while (*b)
-	{
-	get_positions(*a);
-	get_positions(*b);
-	get_target_positions(a, b);
-	get_costs(b, check_size(*a), check_size(*b));
-	find_cheapest(b);
-	push_element_to_a(a, b);
-	}
-	rotate(a, size);
-}
-
-// TODO
-// debugging 
-// 		sometimes element gets lost
-// 		sometimes it sorts into 2 sequences of numbers correct, but not one
-// 		memory leaks and valgrind errors
-// find visualizer to test on huge stack
+// void	big_sort(t_stack_node **a, t_stack_node **b, int size)
+// {
+// 	assign_index(a, size);
+// 	check_above_median(a, size);
+// 	fill_stack_b(a, b, size);
+// 	while (*b)
+// 	{
+// 		get_positions(*a);
+// 		get_positions(*b);
+// 		get_target_positions(a, b);
+// 		get_costs(b, check_size(*a), check_size(*b));
+// 		find_cheapest(b);
+// 		push_element_to_a(a, b);
+// 	}
+// 	rotate(a, size);
+// }
