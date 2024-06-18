@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:51:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 07:10:39 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:11:56 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ long long	my_atolong(const char *s, int *error)
 		nb = (nb * 10) + *s - '0';
 		s++;
 	}
+	if (*s == '.' || *s == ',')
+		while (*s && (*(s + 1) == '0' || *(s + 1) == '\0'))
+			s++;
 	if (nb * pm > INT_MAX || nb * pm < INT_MIN || *s != '\0')
 		*error = 1;
 	return (nb * pm);
@@ -48,7 +51,7 @@ void	putstr_fd(char *s, int fd)
 	}
 }
 
-int		absolute (int nb)
+int	absolute(int nb)
 {
 	if (nb < 0)
 		nb = nb * (-1);
