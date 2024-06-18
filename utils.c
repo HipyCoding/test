@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:51:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 06:53:58 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 07:10:39 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,22 @@ int		absolute (int nb)
 	if (nb < 0)
 		nb = nb * (-1);
 	return (nb);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*str;
+	size_t	i;
+
+	i = 0;
+	str = (void *)malloc(count * size);
+	if (str)
+	{
+		while (i < count * size)
+		{
+			*(char *)(str + i) = 0;
+			i++;
+		}
+	}
+	return (str);
 }

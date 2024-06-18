@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_args.c                                      :+:      :+:    :+:   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:20:03 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 06:04:45 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 07:12:13 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	add_node (t_stack_node **stack, int value)
 	t_stack_node *new;
 	t_stack_node *prev;
 
-	new = malloc(sizeof(t_stack_node));
+	new = ft_calloc(1, sizeof(t_stack_node));
 	if (!new)
 		return;
 	new->next = NULL;
