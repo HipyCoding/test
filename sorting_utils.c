@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:55:10 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/17 04:19:17 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 02:49:29 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,17 @@ void assign_index(t_stack_node **stack, int size)
 	}
 }
 
+void	target_of_biggest(t_stack_node **a, t_stack_node *b)
+{
+	t_stack_node	*node;
+
+	node = b;
+
+	node->target_position = check_max(*a)->position + 1;
+	if (check_max(*a)->position == check_size(*a) - 1)
+		node->target_position = 0;
+}
+
 void	get_positions(t_stack_node *stack)
 {
 	t_stack_node	*node;
@@ -64,18 +75,18 @@ void	get_target_positions(t_stack_node **a, t_stack_node **b)
 	node_b = *b;
 	while (node_b)
 	{
-		prev_value = INT_MIN;
+		prev_value = INT_MAX;
 		while(node_a)
 		{
-			if (node_b->value > node_a->value && node_a->value > prev_value)
+			if (node_b->value < node_a->value && node_a->value < prev_value)
 			{
-				node_b->target_position = node_a->position + 1;
+				node_b->target_position = node_a->position;
 				prev_value = node_a->value;
 			}
 			node_a = node_a->next;
 		}
-		if(prev_value == INT_MIN)
-			node_b->target_position = 0;
+		if(prev_value == INT_MAX)
+			target_of_biggest(a, node_b);
 		node_a = *a;
 		node_b = node_b->next;
 	}
