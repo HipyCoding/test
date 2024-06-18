@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/16 08:38:43 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 04:10:23 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ void		error_fd(int fd);
 long long	my_atolong(const char *s, int *error);
 char		**ft_split(char const *s, char c);
 void		free_2d_string(char **ptr);
-void		free_stack(t_stack_node *stack);
-void		free_and_exit(char **ptr, t_stack_node *stack, int	i);
+void		free_stack(t_stack_node **stack);
+void		free_and_exit(char **ptr, t_stack_node **stack, int	i);
 int 		absolute (int nb);
 
 //sorting utils
-void	assign_index(t_stack_node *stack, int size);
+void	assign_index(t_stack_node **stack, int size);
 void	get_positions(t_stack_node *stack);
 void	get_target_positions(t_stack_node **a, t_stack_node **b);
 void	get_costs(t_stack_node **a, int size_a, int size_b);
@@ -77,6 +77,6 @@ int			check_if_sorted(t_stack_node *stack);
 int				check_size(t_stack_node *stack);
 t_stack_node	*check_max(t_stack_node *stack);
 int				next_bigger(t_stack_node *stack, int nb);
-void			check_above_median(t_stack_node *stack, int size);
+void			check_above_median(t_stack_node **stack, int size);
 
 #endif

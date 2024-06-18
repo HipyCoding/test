@@ -6,16 +6,16 @@
 #    By: candrese <candrese@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/12 18:11:58 by candrese          #+#    #+#              #
-#    Updated: 2024/06/15 20:22:46 by candrese         ###   ########.fr        #
+#    Updated: 2024/06/18 06:09:05 by candrese         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 CFLAGS	:= -Wall -Wextra -Werror -g3 #-fsanitize=address
 
-SRCS	:= main.c utils.c split.c init_to_winit.c handle_args.c\
-	operator_push_swap.c operator_rotate.c operator_rev_rotate.c\
-	free_exit.c checks.c sort.c sorting_utils.c
+SRCS	:= main.c utils.c split.c parse_args.c\
+	operator_push.c operator_rotate.c operator_rev_rotate.c\
+	free_exit.c checks.c sort.c sorting_utils.c operator_swap.c
 
 OBJS	:= ${SRCS:.c=.o}
 
