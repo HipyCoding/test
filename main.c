@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:45:39 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/17 16:19:05 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 04:50:27 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ void	sort_3(t_stack_node **a)
 {
 	if (!*a)
 		return;
-	if (check_max(*a)->value == (*a)->value)
-		ra(a,1);
-	else if (check_max(*a)->value == (*a)->next->value)
-		rra(a,1);
 	if (!check_if_sorted(*a))
-		sa(a,1);
+	{
+		if (check_max(*a)->value == (*a)->value)
+			ra(a,1);
+		else if (check_max(*a)->value == (*a)->next->value)
+			rra(a,1);
+		if (!check_if_sorted(*a))
+			sa(a,1);
+	}
 }
 
 void	sort_stack(t_stack_node **a, t_stack_node **b, int size)
@@ -64,17 +67,17 @@ int	main(int argc, char **argv)
 
 // for testing and debugging
 
-// 10 7 2 5  19 1 -2
+// 6 8 5 12 15 4 11 14 2 3 1 13 10 7 9
 
 	// // stack a
 	while (a->prev)
 		a=a->prev;
 	while (a->next)
 	{
-		printf("%d[%d](%d) ", a->value, a->index, a->target_position);
+		printf("%d ", a->value);
 		a = a->next;
 	}
-	printf("%d[%d](%d)\n", a->value, a->index, a->target_position);
+	printf("%d\n", a->value);
 
 	// // stack b
 	// while (b->prev)
