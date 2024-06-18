@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 06:04:06 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 08:24:18 by candrese         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:26:04 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	check_above_median(t_stack_node **stack, int size)
 	}
 }
 
-int	next_bigger(t_stack_node *stack, int nb)
+int	next_bigger(t_stack_node *stack, long int nb)
 {
 	int				min;
 	bool			new;
@@ -87,7 +87,7 @@ int	next_bigger(t_stack_node *stack, int nb)
 	node = stack;
 	while (node)
 	{
-		if (node->value > nb && node->value < min)
+		if (node->value > nb && node->value <= min)
 		{
 			min = node->value;
 			new = true;
