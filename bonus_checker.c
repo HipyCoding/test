@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 01:58:29 by candrese          #+#    #+#             */
-/*   Updated: 2024/10/10 02:07:19 by candrese         ###   ########.fr       */
+/*   Updated: 2024/10/10 02:17:23 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ int		main(int argc, char **argv)
 		return (1);
 	a = read_args(argc, argv);
 	input = get_next_line(0);
-	printf("%s",input);
+	while (input)
+	{
+		printf("%s",input);
+		input = get_next_line(0);
+	}
 	
 	return (0);
 }
