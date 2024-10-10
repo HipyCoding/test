@@ -6,13 +6,14 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:39:31 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 14:25:49 by candrese         ###   ########.fr       */
+/*   Updated: 2024/10/10 02:23:24 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "get_next_line/get_next_line.h"
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdbool.h>
@@ -56,16 +57,19 @@ void			rrr(t_stack_node **stack_a, t_stack_node **stack_b, int print);
 void			sort_3(t_stack_node **a);
 void			big_sort(t_stack_node **a, t_stack_node **b, int size);
 
-//utils & free and exit
+//utils
 void			putstr_fd(char *s, int fd);
-void			error_fd(int fd);
 long long		my_atolong(const char *s, int *error);
 char			**ft_split(char const *s, char c);
+int				absolute(int nb);
+void			*ft_calloc(size_t count, size_t size);
+int	ft_strncmp	(const char *s1, const char *s2, size_t n);
+
+//free and exit
+void			error_fd(int fd);
 void			free_2d_string(char **ptr);
 void			free_stack(t_stack_node **stack);
 void			free_and_exit(char **ptr, t_stack_node **stack, int i);
-int				absolute(int nb);
-void			*ft_calloc(size_t count, size_t size);
 
 //sort
 void			fill_stack_b(t_stack_node **a, t_stack_node **b, int size);
