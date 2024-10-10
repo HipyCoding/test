@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 01:58:29 by candrese          #+#    #+#             */
-/*   Updated: 2024/10/10 02:50:19 by candrese         ###   ########.fr       */
+/*   Updated: 2024/10/10 03:17:55 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,12 @@ int		main(int argc, char **argv)
 	// 	a = a->next;
 	// }
 	// printf("%d\n", a->value);
-		//printf ("b: %d", b->value);
+	//printf ("b: %d", b->value);
 		input = get_next_line(0);
 	}
-	
+	if (check_if_sorted(a))
+		putstr_fd("OK\n", 1);
+	else
+		putstr_fd("KO\n", 1);
 	return (0);
 }
