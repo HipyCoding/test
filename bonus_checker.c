@@ -6,12 +6,19 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 01:58:29 by candrese          #+#    #+#             */
-/*   Updated: 2024/10/10 02:17:23 by candrese         ###   ########.fr       */
+/*   Updated: 2024/10/10 02:36:37 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+static void	do_operation(t_stack_node **a, t_stack_node **b, char *command)
+{
+	if (!ft_strncmp(command, "pb\n", 3))
+		pb(a, b, 0);
+}
+
 int		main(int argc, char **argv)
 {
 	t_stack_node	*a;
@@ -26,7 +33,8 @@ int		main(int argc, char **argv)
 	input = get_next_line(0);
 	while (input)
 	{
-		printf("%s",input);
+		do_operation(&a, &b, input);
+		//printf ("b: %d", b->value);
 		input = get_next_line(0);
 	}
 	
