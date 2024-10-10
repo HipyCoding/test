@@ -6,7 +6,7 @@
 /*   By: candrese <candrese@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:51:19 by candrese          #+#    #+#             */
-/*   Updated: 2024/06/18 09:11:56 by candrese         ###   ########.fr       */
+/*   Updated: 2024/10/10 02:22:06 by candrese         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,16 @@ void	*ft_calloc(size_t count, size_t size)
 		}
 	}
 	return (str);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s1[i] == s2[i] && i < n - 1)
+		i++;
+	if (n == 0)
+		return (0);
+	return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
 }
